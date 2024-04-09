@@ -94,6 +94,7 @@ def add_notes():
         notes = Notes()
         notes.title = form.title.data
         notes.content = form.content.data
+        notes.file = form.file.data
         current_user.notes.append(notes)
         db_sess.merge(current_user)
         db_sess.commit()
