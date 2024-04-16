@@ -100,11 +100,12 @@ def add_notes():
         notes.content = form.content.data
         if request.method == 'POST':
             file = request.files['file']
-            filename = secure_filename(file.filename)
-            notes.file = filename
-            # сохраняем файл
-            os.mkdir(f'users_file/{notes.title}')
-            file.save(f'users_file/{notes.title}/{filename}')
+            if file:
+                filename = secure_filename(file.filename)
+                notes.file = filename
+                # сохраняем файл
+                os.mkdir(f'static/users_file/{notes.title}')
+                file.save(f'static/users_file/{notes.title}/{filename}')
         current_user.notes.append(notes)
         db_sess.merge(current_user)
         db_sess.commit()
@@ -135,10 +136,13 @@ def edit_notes(id):
         if notes:
             if request.method == 'POST':
                 file = request.files['file']
-                filename = secure_filename(file.filename)
-                notes.file = filename
-                # сохраняем файл
-                file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                if file:
+                    filename = secure_filename(file.filename)
+                    notes.file = filename
+                    # сохраняем файл
+                    if notes.title not in os.listdir(f'static/users_file'):
+                        os.mkdir(f'static/users_file/{notes.title}')
+                    file.save(f'static/users_file/{notes.title}/{filename}')
             notes.title = form.title.data
             notes.content = form.content.data
             db_sess.commit()

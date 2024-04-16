@@ -4,13 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="61beea61-255a-456f-8fa1-968b585be916" name="Changes" comment="небольшие добавления">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="61beea61-255a-456f-8fa1-968b585be916" name="Changes" comment="добавление файла">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Яндекс проект WEB.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Яндекс проект WEB.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/notes.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/db/notes.sqlite" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/notes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_file/Capture001.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_file/ddedfdf/image.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_file/image.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/users_file/img.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +88,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712668644273</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="добавление файла">
+      <option name="closed" value="true" />
+      <created>1713271481677</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1713271481677</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -101,6 +112,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="небольшие добавления" />
-    <option name="LAST_COMMIT_MESSAGE" value="небольшие добавления" />
+    <MESSAGE value="добавление файла" />
+    <option name="LAST_COMMIT_MESSAGE" value="добавление файла" />
   </component>
 </project>
