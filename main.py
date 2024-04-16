@@ -39,7 +39,7 @@ def index():
         note.content = ('Пожалуйста войдите в свой аккаунт, или если вы впервые на этом сайте зарегестрируйтесь'
                             ' и войдите в новый аккаунт')
         notes = [note]
-    return render_template("index.html", notes=notes)
+    return render_template("index.html", notes=notes, title='MyMemories')
 
 
 @app.route('/login', methods=['GET', 'POST'])
