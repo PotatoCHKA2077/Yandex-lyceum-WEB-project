@@ -1,16 +1,20 @@
 from flask import Flask, render_template, redirect, request, abort
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
+from werkzeug.utils import secure_filename
+
 from data import db_session
 from data.users import User
 from data.notes import Notes
 from forms.notes import NotesForm
 from forms.loginform import LoginForm
 from forms.user import RegisterForm
+import os
 
 app = Flask(__name__)
 login_manager = LoginManager()
 login_manager.init_app(app)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
+# app.config['UPLOAD_FOLDER'] =
 
 
 def main():
@@ -94,7 +98,13 @@ def add_notes():
         notes = Notes()
         notes.title = form.title.data
         notes.content = form.content.data
-        notes.file = form.file.data
+        if request.method == 'POST':
+            file = request.files['file']
+            filename = secure_filename(file.filename)
+            notes.file = filename
+            # сохраняем файл
+            os.mkdir(f'users_file/{notes.title}')
+            file.save(f'users_file/{notes.title}/{filename}')
         current_user.notes.append(notes)
         db_sess.merge(current_user)
         db_sess.commit()
@@ -123,6 +133,12 @@ def edit_notes(id):
                                             Notes.user == current_user
                                             ).first()
         if notes:
+            if request.method == 'POST':
+                file = request.files['file']
+                filename = secure_filename(file.filename)
+                notes.file = filename
+                # сохраняем файл
+                file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             notes.title = form.title.data
             notes.content = form.content.data
             db_sess.commit()

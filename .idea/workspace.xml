@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="61beea61-255a-456f-8fa1-968b585be916" name="Changes" comment="">
+    <list default="true" id="61beea61-255a-456f-8fa1-968b585be916" name="Changes" comment="небольшие добавления">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/Яндекс проект WEB.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Яндекс проект WEB.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/notes.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/notes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/notes.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/db/notes.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forms/notes.py" beforeDir="false" afterPath="$PROJECT_DIR$/forms/notes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/notes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes.html" afterDir="false" />
     </list>
@@ -79,6 +77,15 @@
       <option name="presentableId" value="Default" />
       <updated>1712140062459</updated>
     </task>
+    <task id="LOCAL-00001" summary="небольшие добавления">
+      <option name="closed" value="true" />
+      <created>1712668644273</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1712668644273</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -91,5 +98,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="небольшие добавления" />
+    <option name="LAST_COMMIT_MESSAGE" value="небольшие добавления" />
   </component>
 </project>
