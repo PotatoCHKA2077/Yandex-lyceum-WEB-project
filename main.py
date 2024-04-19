@@ -9,12 +9,12 @@ from forms.notes import NotesForm
 from forms.loginform import LoginForm
 from forms.user import RegisterForm
 import os
+import shutil
 
 app = Flask(__name__)
 login_manager = LoginManager()
 login_manager.init_app(app)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
-# app.config['UPLOAD_FOLDER'] =
 
 
 def main():
@@ -69,15 +69,15 @@ def register():
         if db_sess.query(User).filter(User.email == form.email.data).first():
             return render_template('register.html', title='Регистрация',
                                    form=form,
-                                   message="Такой пользователь уже есть")
-        user = User(
-            name=form.name.data,
-            email=form.email.data,
-            about=form.about.data
-        )
+                                   message="Пользователь с таким email уже есть")
+        user = User()
+        user.name = form.name.data
+        user.email = form.email.data
+        user.about = form.about.data
         user.set_password(form.password.data)
         db_sess.add(user)
         db_sess.commit()
+        os.mkdir(f'static/users_file/{user.id}')
         return redirect('/login')
     return render_template('register.html', title='Регистрация', form=form)
 
@@ -95,17 +95,26 @@ def add_notes():
     form = NotesForm()
     if form.validate_on_submit():
         db_sess = db_session.create_session()
+        if db_sess.query(Notes).filter(Notes.title == form.title.data, Notes.user == current_user).first():
+            return render_template('notes.html', title='Добавление новости',
+                                   form=form, message="Запись с таким заголовком уже существует")
         notes = Notes()
         notes.title = form.title.data
         notes.content = form.content.data
-        if request.method == 'POST':
-            file = request.files['file']
+        notes.user_id = current_user.id
+        files = request.files.getlist('file')
+        notes.file = []
+        for file in files:
             if file:
                 filename = secure_filename(file.filename)
-                notes.file = filename
+                notes.file.append(filename)
                 # сохраняем файл
-                os.mkdir(f'static/users_file/{notes.title}')
-                file.save(f'static/users_file/{notes.title}/{filename}')
+                dir_path = f'static/users_file/{notes.user_id}/'
+                if notes.title not in os.listdir(dir_path):
+                    print(os.listdir(dir_path), str(notes.user_id))
+                    os.mkdir(f'{dir_path}{notes.title}/')
+                file.save(f'{dir_path}{notes.title}/{filename}')
+
         current_user.notes.append(notes)
         db_sess.merge(current_user)
         db_sess.commit()
@@ -120,9 +129,7 @@ def edit_notes(id):
     form = NotesForm()
     if request.method == "GET":
         db_sess = db_session.create_session()
-        notes = db_sess.query(Notes).filter(Notes.id == id,
-                                            Notes.user == current_user
-                                            ).first()
+        notes = db_sess.query(Notes).filter(Notes.id == id, Notes.user == current_user).first()
         if notes:
             form.title.data = notes.title
             form.content.data = notes.content
@@ -163,6 +170,7 @@ def notes_delete(id):
                                         Notes.user == current_user
                                         ).first()
     if notes:
+        shutil.rmtree(f'static/users_file/{notes.user_id}/{notes.title}/')
         db_sess.delete(notes)
         db_sess.commit()
     else:

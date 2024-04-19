@@ -5,13 +5,13 @@
 {% if current_user.is_authenticated %}
     <a href="notes" class="btn btn-success">Добавить запись</a>
 {% endif %}
-{% for item in notes%}
+{% for item in notes | reverse %}
     <div class="col-md6 border rounded">
         <h2>{{item.title}}</h2>
         <div>
             {{item.content}}
         </div>
-        <img src="/static/users_file/{{item.title}}/{{item.file}}" alt="здесь должна была быть картинка, но не нашлась">
+                <img src="/static/users_file/{{item.user_id}}/{{item.title}}/{{image}}" alt="здесь должна была быть картинка, но не нашлась">
         <div>
             Автор - {{item.user.name}}, Дата написания - {{item.created_date}}
         </div>
