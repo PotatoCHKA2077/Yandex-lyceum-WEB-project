@@ -11,7 +11,13 @@
         <div>
             {{item.content}}
         </div>
-                <img src="/static/users_file/{{item.user_id}}/{{item.title}}/{{image}}" alt="здесь должна была быть картинка, но не нашлась">
+        <div>
+            {% if files[item.title] %}
+                {% for image in files[item.title] %}
+                    <img src="/static/users_file/{{item.user_id}}/{{item.title}}/{{image}}" alt="здесь должна была быть картинка, но не нашлась" width="300" height="300">
+                {% endfor %}
+            {% endif %}
+        </div>
         <div>
             Автор - {{item.user.name}}, Дата написания - {{item.created_date}}
         </div>

@@ -19,27 +19,30 @@ app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 
 def main():
     db_session.global_init("db/notes.sqlite")
-    app.run()
+    app.run(port=8080, host='127.0.0.1')
 
 
 @login_manager.user_loader
 def load_user(user_id):
     db_sess = db_session.create_session()
-    return db_sess.query(User).get(user_id)
+    return db_sess.get(User, user_id)
 
 
 @app.route("/")
 def index():
     db_sess = db_session.create_session()
+    files = {}
     if current_user.is_authenticated:
         notes = db_sess.query(Notes).filter(Notes.user == current_user)
+        for note in notes:
+            files[note.title] = os.listdir(f'static/users_file/{note.user_id}/{note.title}/')
     else:
         note = Notes()
         note.title = 'Необходимо авторизироваться на сайте'
         note.content = ('Пожалуйста войдите в свой аккаунт, или если вы впервые на этом сайте зарегестрируйтесь'
                             ' и войдите в новый аккаунт')
         notes = [note]
-    return render_template("index.html", notes=notes, title='MyMemories')
+    return render_template("index.html", notes=notes, files=files, title='MyMemories')
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -77,7 +80,6 @@ def register():
         user.set_password(form.password.data)
         db_sess.add(user)
         db_sess.commit()
-        os.mkdir(f'static/users_file/{user.id}')
         return redirect('/login')
     return render_template('register.html', title='Регистрация', form=form)
 
@@ -102,20 +104,27 @@ def add_notes():
         notes.title = form.title.data
         notes.content = form.content.data
         notes.user_id = current_user.id
-        files = request.files.getlist('file')
-        notes.file = []
-        for file in files:
-            if file:
-                filename = secure_filename(file.filename)
-                notes.file.append(filename)
-                # сохраняем файл
-                dir_path = f'static/users_file/{notes.user_id}/'
-                if notes.title not in os.listdir(dir_path):
-                    print(os.listdir(dir_path), str(notes.user_id))
-                    os.mkdir(f'{dir_path}{notes.title}/')
-                file.save(f'{dir_path}{notes.title}/{filename}')
-
-        current_user.notes.append(notes)
+        if request.method == 'POST':
+            files = request.files.getlist('file')
+            # сохраняем файл
+            if str(current_user.id) not in os.listdir('static/users_file'):
+                user_dir = f'static/users_file/{current_user.id}'
+                os.mkdir(user_dir)
+            dir_path = f'static/users_file/{notes.user_id}/'
+            if notes.title not in os.listdir(dir_path):
+                os.mkdir(f'{dir_path}{notes.title}/')
+            for file in files:
+                if file:
+                    filename = secure_filename(file.filename)
+                    file.save(f'{dir_path}{notes.title}/{filename}')
+        try:
+            current_user.notes.append(notes)
+        except Exception as ex:
+            print(ex)
+            return render_template('notes.html', title='Добавление новости', form=form,
+                                   message='Извитните, произошла непредвиденная ошибка!'
+                                           ' Просим вас нажать на кнопку "Создать" снова '
+                                           '(Выбирать файлы повторно не нужно).')
         db_sess.merge(current_user)
         db_sess.commit()
         return redirect('/')
@@ -142,14 +151,18 @@ def edit_notes(id):
                                             ).first()
         if notes:
             if request.method == 'POST':
-                file = request.files['file']
-                if file:
-                    filename = secure_filename(file.filename)
-                    notes.file = filename
-                    # сохраняем файл
-                    if notes.title not in os.listdir(f'static/users_file'):
-                        os.mkdir(f'static/users_file/{notes.title}')
-                    file.save(f'static/users_file/{notes.title}/{filename}')
+                files = request.files.getlist('file')
+                # сохраняем файл
+                if str(current_user.id) not in os.listdir('static/users_file'):
+                    user_dir = f'static/users_file/{current_user.id}'
+                    os.mkdir(user_dir)
+                dir_path = f'static/users_file/{notes.user_id}/'
+                if notes.title not in os.listdir(dir_path):
+                    os.mkdir(f'{dir_path}{notes.title}/')
+                for file in files:
+                    if file:
+                        filename = secure_filename(file.filename)
+                        file.save(f'{dir_path}{notes.title}/{filename}')
             notes.title = form.title.data
             notes.content = form.content.data
             db_sess.commit()
