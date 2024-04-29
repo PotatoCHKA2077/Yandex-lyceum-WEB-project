@@ -4,7 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="61beea61-255a-456f-8fa1-968b585be916" name="Changes" comment="добавление и показ видео и изображений" />
+    <list default="true" id="61beea61-255a-456f-8fa1-968b585be916" name="Changes" comment="добавление и показ видео и изображений">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/notes.sqlite" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/users_file/1/images/title/1c01a6bf8e45a2cd44c59256adaa221f_xqg3n.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/users_file/1/images/title/1c01a6bf8e45a2cd44c59256adaa221f_xqg3n_.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/users_file/1/images/title/1c01a6bf8e45a2cd44c59256adaa221f_xqg3n_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/users_file/1/videos/title/0001-0250.mov" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/users_file/1/videos/title/20221017_202628.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/users_file/1/videos/title/20221204_185258.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/users_file/1/videos/title/20221228_170056_001_001.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/users_file/1/videos/title/20230507_203916.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/users_file/1/videos/title/31a8349bb07620712633889145d65522.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/users_file/1/videos/title/4609115a07c1789b42dc44a85292b5e4.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -144,7 +159,23 @@
       <option name="project" value="LOCAL" />
       <updated>1714381741840</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="добавление и показ видео и изображений">
+      <option name="closed" value="true" />
+      <created>1714381975215</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1714381975215</updated>
+    </task>
+    <task id="LOCAL-00010" summary="добавление и показ видео и изображений">
+      <option name="closed" value="true" />
+      <created>1714381986463</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1714381986463</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

@@ -36,8 +36,8 @@ def index():
     if current_user.is_authenticated:
         notes = db_sess.query(Notes).filter(Notes.user == current_user)
         for note in notes:
-            images[note.title] = os.listdir(f'static/users_file/{note.user_id}/images/{note.title}/')
-            videos[note.title] = os.listdir(f'static/users_file/{note.user_id}/videos/{note.title}/')
+            images[note.title] = os.listdir(f'static/users_file/{note.user_id}/{note.title}/images/')
+            videos[note.title] = os.listdir(f'static/users_file/{note.user_id}/{note.title}/videos/')
 
     else:
         note = Notes()
@@ -113,28 +113,27 @@ def add_notes():
             if str(current_user.id) not in os.listdir('static/users_file'):
                 os.mkdir(dir_path)
             images = request.files.getlist('image')
-            if 'images' not in os.listdir(dir_path):
-                os.mkdir(f'{dir_path}images/')
-            if notes.title not in os.listdir(f'{dir_path}images/'):
-                os.mkdir(f'{dir_path}images/{notes.title}')
+            if notes.title not in os.listdir(dir_path):
+                os.mkdir(f'{dir_path}{notes.title}')
+            if 'images' not in os.listdir(f'{dir_path}{notes.title}/'):
+                os.mkdir(f'{dir_path}{notes.title}/images/')
             for image in images:
                 if image:
                     filename = secure_filename(image.filename)
-                    image.save(f'{dir_path}images/{notes.title}/{filename}')
+                    image.save(f'{dir_path}{notes.title}/images/{filename}')
 
             videos = request.files.getlist('video')
-            if 'videos' not in os.listdir(dir_path):
-                os.mkdir(f'{dir_path}videos/')
-            if notes.title not in os.listdir(f'{dir_path}videos/'):
-                os.mkdir(f'{dir_path}videos/{notes.title}')
+            if notes.title not in os.listdir(dir_path):
+                os.mkdir(f'{dir_path}{notes.title}')
+            if 'videos' not in os.listdir(f'{dir_path}{notes.title}/'):
+                os.mkdir(f'{dir_path}{notes.title}/videos/')
             for video in videos:
                 if video:
                     filename = secure_filename(video.filename)
-                    video.save(f'{dir_path}videos/{notes.title}/{filename}')
+                    video.save(f'{dir_path}{notes.title}/videos/{filename}')
         try:
             current_user.notes.append(notes)
-        except Exception as ex:
-            print(ex)
+        except Exception:
             return render_template('notes.html', title='Добавление новости', form=form,
                                    message='Извитните, произошла непредвиденная ошибка!'
                                            ' Просим вас нажать на кнопку "Создать" снова '

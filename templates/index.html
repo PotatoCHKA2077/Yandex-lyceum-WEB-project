@@ -16,7 +16,7 @@
         <div>
             {% if images[item.title] %}
                 {% for image in images[item.title] %}
-                    <img src="/static/users_file/{{item.user_id}}/images/{{item.title}}/{{image}}" alt="{{image}}" width="320" height="240">
+                    <img src="/static/users_file/{{item.user_id}}/{{item.title}}/images/{{image}}" alt="{{image}}" width="320" height="240">
                 {% endfor %}
             {% endif %}
         </div>
@@ -24,7 +24,7 @@
             {% if videos[item.title] %}
                 {% for video in videos[item.title] %}
                     <video width="320" height="240" controls>
-                        <source src="/static/users_file/{{item.user_id}}/videos/{{item.title}}/{{video}}" type="video/mp4">
+                        <source src="/static/users_file/{{item.user_id}}/{{item.title}}/videos/{{video}}" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                 {% endfor %}
