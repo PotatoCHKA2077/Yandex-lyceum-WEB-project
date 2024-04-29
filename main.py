@@ -31,18 +31,21 @@ def load_user(user_id):
 @app.route("/")
 def index():
     db_sess = db_session.create_session()
-    files = {}
+    images = {}
+    videos = {}
     if current_user.is_authenticated:
         notes = db_sess.query(Notes).filter(Notes.user == current_user)
         for note in notes:
-            files[note.title] = os.listdir(f'static/users_file/{note.user_id}/{note.title}/')
+            images[note.title] = os.listdir(f'static/users_file/{note.user_id}/images/{note.title}/')
+            videos[note.title] = os.listdir(f'static/users_file/{note.user_id}/videos/{note.title}/')
+
     else:
         note = Notes()
         note.title = 'Необходимо авторизироваться на сайте'
         note.content = ('Пожалуйста войдите в свой аккаунт, или если вы впервые на этом сайте зарегестрируйтесь'
                             ' и войдите в новый аккаунт')
         notes = [note]
-    return render_template("index.html", notes=notes, files=files, title='MyMemories')
+    return render_template("index.html", notes=notes, images=images, videos=videos, title='MyMemories')
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -105,18 +108,29 @@ def add_notes():
         notes.content = form.content.data
         notes.user_id = current_user.id
         if request.method == 'POST':
-            files = request.files.getlist('file')
             # сохраняем файл
+            dir_path = f'static/users_file/{current_user.id}/'
             if str(current_user.id) not in os.listdir('static/users_file'):
-                user_dir = f'static/users_file/{current_user.id}'
-                os.mkdir(user_dir)
-            dir_path = f'static/users_file/{notes.user_id}/'
-            if notes.title not in os.listdir(dir_path):
-                os.mkdir(f'{dir_path}{notes.title}/')
-            for file in files:
-                if file:
-                    filename = secure_filename(file.filename)
-                    file.save(f'{dir_path}{notes.title}/{filename}')
+                os.mkdir(dir_path)
+            images = request.files.getlist('image')
+            if 'images' not in os.listdir(dir_path):
+                os.mkdir(f'{dir_path}images/')
+            if notes.title not in os.listdir(f'{dir_path}images/'):
+                os.mkdir(f'{dir_path}images/{notes.title}')
+            for image in images:
+                if image:
+                    filename = secure_filename(image.filename)
+                    image.save(f'{dir_path}images/{notes.title}/{filename}')
+
+            videos = request.files.getlist('video')
+            if 'videos' not in os.listdir(dir_path):
+                os.mkdir(f'{dir_path}videos/')
+            if notes.title not in os.listdir(f'{dir_path}videos/'):
+                os.mkdir(f'{dir_path}videos/{notes.title}')
+            for video in videos:
+                if video:
+                    filename = secure_filename(video.filename)
+                    video.save(f'{dir_path}videos/{notes.title}/{filename}')
         try:
             current_user.notes.append(notes)
         except Exception as ex:

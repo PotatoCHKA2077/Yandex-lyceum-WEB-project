@@ -1,7 +1,12 @@
-h3 {
-   color: #0dcaf0;
-   margin-left: 0px;
+.headers {
+    text-align: center
 }
-h2 {
-    text-align: center;
+header {
+    background-color: #6f00ff
+}
+.header-text {
+    color: #ffffff
+}
+.empty {
+    color: #ffffff
 }

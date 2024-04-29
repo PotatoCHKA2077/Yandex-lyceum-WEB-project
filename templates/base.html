@@ -1,6 +1,12 @@
 <!doctype html>
 <html lang="en">
     <head>
+        <style>
+            body {
+            background: #fa8e47;
+            color: #fff;
+            }
+        </style>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" type="text/css" href="static/css/style.css" />
@@ -10,24 +16,26 @@
               crossorigin="anonymous">
         <title>{{title}}</title>
     </head>
-    <body>
+    <body class="body-container">
         <header>
-            <nav class="navbar navbar-light bg-light">
-                <h1>Это ТВОЙ сайт!</h1>
+            <nav class="navbar navbar-light">
+                <h1 class="header-text">MyMemories</h1>
                 {% if current_user.is_authenticated %}
-                    <a class="navbar-brand" href="/logout">{{ current_user.name }} {{ current_user.surname }}</a>
+                    <a class="navbar-brand" href="/logout" style="color: #ffffff">{{ current_user.name }}</a>
                 {% else %}
                     <p>
-                        <a class="btn btn-primary " href="/register">Зарегистрироваться</a>
+                        <a class="btn btn-primary" href="/register">Зарегистрироваться</a>
                         <a class="btn btn-success" href="/login">Войти</a>
                     </p>
                 {% endif %}
             </nav>
         </header>
-        <h3>Ты можешь делать здесь почти все что угодно!!!</h3>
-        <!-- Begin page content -->
-        <main role="main" class="container">
-            {% block content %}{% endblock %}
-        </main>
+        <div>
+            <h3 class="empty">0</h3>
+            <!-- Begin page content -->
+            <main role="main" class="container">
+                {% block content %}{% endblock %}
+            </main>
+        </div>
     </body>
 </html>

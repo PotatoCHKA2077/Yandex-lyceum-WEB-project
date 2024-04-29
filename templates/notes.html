@@ -23,7 +23,10 @@
         {% endfor %}
     </div>
     <div class="form-group">
-        <input type="file" class="form-control-file" id="photo" name="file" multiple>
+        <p>Выберете изображения (при необходимости).</p>
+        <input type="file" class="form-control-file" id="image" name="image" accept="image/*" multiple>
+        <p>Выберете видео (при необходимости).</p>
+        <input type="file" class="form-control-file" id="video" name="video" accept="video/*" multiple>
     </div>
     <div>{{ form.submit(type="submit", class="btn btn-primary")}}</div>
     {{message}}

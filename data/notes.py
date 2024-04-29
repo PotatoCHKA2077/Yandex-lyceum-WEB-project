@@ -12,7 +12,7 @@ class Notes(SqlAlchemyBase):
     title = sqlalchemy.Column(String, nullable=True)
     content = sqlalchemy.Column(String, nullable=True)
     created_date = sqlalchemy.Column(sqlalchemy.DateTime,
-                                     default=datetime.datetime.now)
+                                     default=datetime.datetime.now())
 
     user_id = sqlalchemy.Column(Integer,
                                 sqlalchemy.ForeignKey("users.id"))

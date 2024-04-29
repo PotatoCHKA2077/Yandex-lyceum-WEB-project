@@ -1,25 +1,37 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Твои записи</h1>
+<h3 class="headers">Здесь хранятся все твои воспоминания!</h3>
+
+<h1 class="headers">Мои воспоминания:</h1>
 {% if current_user.is_authenticated %}
-    <a href="notes" class="btn btn-success">Добавить запись</a>
+    <a href="notes" class="btn btn-success">Добавить воспоминание</a>
 {% endif %}
 {% for item in notes | reverse %}
     <div class="col-md6 border rounded">
-        <h2>{{item.title}}</h2>
+        <h2 class="headers">{{item.title}}</h2>
         <div>
             {{item.content}}
         </div>
         <div>
-            {% if files[item.title] %}
-                {% for image in files[item.title] %}
-                    <img src="/static/users_file/{{item.user_id}}/{{item.title}}/{{image}}" alt="здесь должна была быть картинка, но не нашлась" width="300" height="300">
+            {% if images[item.title] %}
+                {% for image in images[item.title] %}
+                    <img src="/static/users_file/{{item.user_id}}/images/{{item.title}}/{{image}}" alt="{{image}}" width="320" height="240">
                 {% endfor %}
             {% endif %}
         </div>
         <div>
-            Автор - {{item.user.name}}, Дата написания - {{item.created_date}}
+            {% if videos[item.title] %}
+                {% for video in videos[item.title] %}
+                    <video width="320" height="240" controls>
+                        <source src="/static/users_file/{{item.user_id}}/videos/{{item.title}}/{{video}}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            Дата написания - {{item.created_date}}
         </div>
         {% if current_user.is_authenticated and current_user == item.user %}
             <div>
