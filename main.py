@@ -165,18 +165,29 @@ def edit_notes(id):
                                             ).first()
         if notes:
             if request.method == 'POST':
-                files = request.files.getlist('file')
                 # сохраняем файл
+                dir_path = f'static/users_file/{current_user.id}/'
                 if str(current_user.id) not in os.listdir('static/users_file'):
-                    user_dir = f'static/users_file/{current_user.id}'
-                    os.mkdir(user_dir)
-                dir_path = f'static/users_file/{notes.user_id}/'
-                if notes.title not in os.listdir(dir_path):
-                    os.mkdir(f'{dir_path}{notes.title}/')
-                for file in files:
-                    if file:
-                        filename = secure_filename(file.filename)
-                        file.save(f'{dir_path}{notes.title}/{filename}')
+                    os.mkdir(dir_path)
+                images = request.files.getlist('image')
+                if 'images' not in os.listdir(dir_path):
+                    os.mkdir(f'{dir_path}images/')
+                if notes.title not in os.listdir(f'{dir_path}images/'):
+                    os.mkdir(f'{dir_path}images/{notes.title}')
+                for image in images:
+                    if image:
+                        filename = secure_filename(image.filename)
+                        image.save(f'{dir_path}images/{notes.title}/{filename}')
+
+                videos = request.files.getlist('video')
+                if 'videos' not in os.listdir(dir_path):
+                    os.mkdir(f'{dir_path}videos/')
+                if notes.title not in os.listdir(f'{dir_path}videos/'):
+                    os.mkdir(f'{dir_path}videos/{notes.title}')
+                for video in videos:
+                    if video:
+                        filename = secure_filename(video.filename)
+                        video.save(f'{dir_path}videos/{notes.title}/{filename}')
             notes.title = form.title.data
             notes.content = form.content.data
             db_sess.commit()
