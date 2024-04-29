@@ -4,25 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="61beea61-255a-456f-8fa1-968b585be916" name="Changes" comment="добавление нескольких файлов, и другие небольшие изменения">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_04_2024_22_36_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_04_2024_22_36__Changes_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/db_session.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/db_session.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/notes.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/notes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/notes.sqlite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/forms/notes.py" beforeDir="false" afterPath="$PROJECT_DIR$/forms/notes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/users_file/1/i/20220602_171509.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/users_file/1/i/81e5df3e-722d-11ed-b0a1-5254001a6f94.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/users_file/1/p/20201221_032451.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/users_file/1/p/46e8eab8a136d4b176a0ecc96d1e0778.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/users_file/1/r/0001-0250.mov" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/notes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes.html" afterDir="false" />
-    </list>
+    <list default="true" id="61beea61-255a-456f-8fa1-968b585be916" name="Changes" comment="добавление и показ видео и изображений" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -146,7 +128,23 @@
       <option name="project" value="LOCAL" />
       <updated>1713536883449</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="добавление и показ видео и изображений">
+      <option name="closed" value="true" />
+      <created>1714381721845</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1714381721845</updated>
+    </task>
+    <task id="LOCAL-00008" summary="добавление и показ видео и изображений">
+      <option name="closed" value="true" />
+      <created>1714381741840</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1714381741840</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -166,6 +164,7 @@
     <MESSAGE value="показ изображений" />
     <MESSAGE value="добавил пояснительную записку" />
     <MESSAGE value="добавление нескольких файлов, и другие небольшие изменения" />
-    <option name="LAST_COMMIT_MESSAGE" value="добавление нескольких файлов, и другие небольшие изменения" />
+    <MESSAGE value="добавление и показ видео и изображений" />
+    <option name="LAST_COMMIT_MESSAGE" value="добавление и показ видео и изображений" />
   </component>
 </project>
