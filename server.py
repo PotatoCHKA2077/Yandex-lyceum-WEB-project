@@ -110,6 +110,8 @@ def add_notes():
         notes.user_id = current_user.id
         if request.method == 'POST':
             # сохраняем файл
+            if 'users_file' not in os.listdir('static'):
+                os.mkdir('static/users_file')
             dir_path = f'static/users_file/{current_user.id}/'
             if str(current_user.id) not in os.listdir('static/users_file'):
                 os.mkdir(dir_path)
