@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="61beea61-255a-456f-8fa1-968b585be916" name="Changes" comment="добавление иконки, подготовка к старту" />
+    <list default="true" id="61beea61-255a-456f-8fa1-968b585be916" name="Changes" comment="добавление папки users_file">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/i (1).webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/i (2).webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/i.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/istockphoto-158693302-640_adpp_is.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/krasivoe-i-korotkoe-video-priroda_(videomega.ru).mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/start.sh" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,6 +43,7 @@
   &quot;keyToString&quot;: {
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.server (1).executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
@@ -203,7 +214,23 @@
       <option name="project" value="LOCAL" />
       <updated>1714391755087</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="удаление файлов">
+      <option name="closed" value="true" />
+      <created>1714447397006</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1714447397006</updated>
+    </task>
+    <task id="LOCAL-00014" summary="добавление папки users_file">
+      <option name="closed" value="true" />
+      <created>1714447541860</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1714447541860</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -226,6 +253,8 @@
     <MESSAGE value="добавление и показ видео и изображений" />
     <MESSAGE value="небольшие изменения" />
     <MESSAGE value="добавление иконки, подготовка к старту" />
-    <option name="LAST_COMMIT_MESSAGE" value="добавление иконки, подготовка к старту" />
+    <MESSAGE value="удаление файлов" />
+    <MESSAGE value="добавление папки users_file" />
+    <option name="LAST_COMMIT_MESSAGE" value="добавление папки users_file" />
   </component>
 </project>
